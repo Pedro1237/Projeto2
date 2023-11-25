@@ -1,5 +1,4 @@
 <?php
-
 class Reserva {
     private $id;
     private $nome;
@@ -15,23 +14,43 @@ class Reserva {
         $this->num_hospedes = $num_hospedes;
     }
 
-    public function getId() {
+    public function definirId($id) {
+        $this->id = $id;
+    }
+
+    public function definirNome($nome) {
+        $this->nome = $nome;
+    }
+
+    public function definirCheckin($checkin) {
+        $this->checkin = $checkin;
+    }
+
+    public function definirCheckout($checkout) {
+        $this->checkout = $checkout;
+    }
+
+    public function definirNumHospedes($num_hospedes) {
+        $this->num_hospedes = $num_hospedes;
+    }
+
+    public function exibirId() {
         return $this->id;
     }
 
-    public function getNome() {
+    public function exibirNome() {
         return $this->nome;
     }
 
-    public function getCheckin() {
+    public function exibirCheckin() {
         return $this->checkin;
     }
 
-    public function getCheckout() {
+    public function exibirCheckout() {
         return $this->checkout;
     }
 
-    public function getNumHospedes() {
+    public function exibirNumHospedes() {
         return $this->num_hospedes;
     }
 }

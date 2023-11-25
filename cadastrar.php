@@ -3,15 +3,13 @@ require "Conectar.php";
 require "Reserva.php";
 require "RepositorioReserva.php";
 
-$id = $_POST['txtId'];
 $nome = $_POST['txtNome'];
-$checkin = $_POST['txtChekin'];
+$checkin = $_POST['txtCheckin'];
 $checkout = $_POST['txtCheckout'];
-$num_hospedes = $_POST['txtHospedes'];
+$num_hospedes = $_POST['txtNumHospedes'];
 
-$novaReserva = new Reserva($id, $nome, $checkin, $checkout, $num_hospedes);
+$novaReserva = new Reserva(null, $nome, $checkin, $checkout, $num_hospedes);
 
 (new RepositorioReserva())->cadastrar($banco, $novaReserva);
 
-header('Location: /');
-?>
+header('Location: /'); // Redireciona para a página principal depois que cadastra

@@ -1,20 +1,17 @@
 <?php
-
 class RepositorioReserva
 {
     public function cadastrar(PDO $banco, Reserva $reserva)
     {
-        $sqlInsert = "INSERT INTO RESERVA(id, nome, checkin, checkout, num_hospedes) VALUES (:i, :n, :ci, :co, :nh)";
+        $sqlInsert = "INSERT INTO RESERVA(nome, checkin, checkout, num_hospedes) VALUES (:n, :ci, :co, :nh)";
 
         $insert = $banco->prepare($sqlInsert);
 
-        $id = $reserva->getId();
-        $nome = $reserva->getNome();
-        $checkin = $reserva->getCheckin();
-        $checkout = $reserva->getCheckout();
-        $num_hospedes = $reserva->getNumHospedes();
+        $nome = $reserva->exibirNome();
+        $checkin = $reserva->exibirCheckin();
+        $checkout = $reserva->exibirCheckout();
+        $num_hospedes = $reserva->exibirNumHospedes();
 
-        $insert->bindParam(":i", $id);
         $insert->bindParam(":n", $nome);
         $insert->bindParam(":ci", $checkin);
         $insert->bindParam(":co", $checkout);
@@ -23,13 +20,9 @@ class RepositorioReserva
         $insert->execute();
     }
 
-    public function exibirTudo(PDO $banco)
-    {
+    public function exibirTudo(PDO $banco){
         $sql = "SELECT * FROM RESERVA";
-        $dados = $banco->query($sql);
-
-
-        return $dados->fetchAll(PDO::FETCH_ASSOC);
+        $dado = $banco->query($sql);
+        return $dado->fetchAll(PDO::FETCH_ASSOC);
     }
 }
-?>
